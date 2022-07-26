@@ -40,6 +40,6 @@ public class SquarePrimesTest {
         IntList lst = IntList.of(8, 9, 10);
         boolean changed = IntListExercises.squarePrimes(lst);
         assertEquals("8 -> 9 -> 10", lst.toString());
-        assertTrue(!changed);
+        assertFalse(changed);
     }
 }
