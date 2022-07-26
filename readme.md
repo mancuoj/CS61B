@@ -2,9 +2,9 @@
 
 UCB CS61B — sp21 Solutions 🎉
 
-- [Spring 2018](https://sp18.datastructur.es/)
-- [Spring 2021](https://sp21.datastructur.es/index.html)
+- [Spring 2021](https://sp21.datastructur.es/)
 - [Textbook Hug61B](https://joshhug.gitbooks.io/hug61b/content/)
+- [Gradescope BP25V6](https://www.gradescope.com/)
 - [My Blog](https://mancuoj.vercel.app/cs61b)
 
 
@@ -14,5 +14,6 @@ In 61A, the correctness of a program was our primary goal. In CS61B, we’re con
 
 - ✅ Video & Slides & Guide
 - ✅ Textbook
+- ✅ Code & Disc & Exercises
 - ✅ Lab & HW & & Project
 - ✅ Auto Grader
