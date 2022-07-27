@@ -3,12 +3,16 @@ package game2048;
 import java.util.Observer;
 import java.util.Observable;
 
-/** An observer that prints changes to a Model.
- *  @author P. N. Hilfinger
+/**
+ * An observer that prints changes to a Model.
+ *
+ * @author P. N. Hilfinger
  */
 class BoardLogger implements Observer {
 
-    /** A line to separate each move. */
+    /**
+     * A line to separate each move.
+     */
     private static final String LINE = "---------------------";
 
     @Override

@@ -4,18 +4,21 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-/** Tests the maxTileExists() static method of Model.
+/**
+ * Tests the maxTileExists() static method of Model.
  *
  * @author Omar Khan
  */
 public class TestMaxTileExists {
-    /** The board we'll be testing. */
+    /**
+     * The board we'll be testing.
+     */
     static Board b;
 
     @Test
     /** Note that this isn't a possible board state. */
     public void testEmptyBoard() {
-        int[][] rawVals = new int[][] {
+        int[][] rawVals = new int[][]{
                 {0, 0, 0, 0},
                 {0, 0, 0, 0},
                 {0, 0, 0, 0},
@@ -30,7 +33,7 @@ public class TestMaxTileExists {
     @Test
     /** Tests a full board with no max piece. */
     public void testFullBoardNoMax() {
-        int[][] rawVals = new int[][] {
+        int[][] rawVals = new int[][]{
                 {2, 2, 2, 2},
                 {2, 2, 2, 2},
                 {2, 2, 2, 2},
@@ -45,7 +48,7 @@ public class TestMaxTileExists {
     @Test
     /** Tests a full board with the max piece. */
     public void testFullBoardMax() {
-        int[][] rawVals = new int[][] {
+        int[][] rawVals = new int[][]{
                 {2, 2, 2, 2},
                 {2, 2, 2, 2},
                 {2, 2, 2, 2},
@@ -61,7 +64,7 @@ public class TestMaxTileExists {
     @Test
     /** Tests multiple max pieces. */
     public void testMultipleMax() {
-        int[][] rawVals = new int[][] {
+        int[][] rawVals = new int[][]{
                 {2, 2, 2, 2},
                 {2, 2048, 0, 0},
                 {0, 0, 0, 2},
@@ -77,7 +80,7 @@ public class TestMaxTileExists {
     @Test
     /** Tests when the max piece is in the top right corner. */
     public void testTopRightCorner() {
-        int[][] rawVals = new int[][] {
+        int[][] rawVals = new int[][]{
                 {0, 0, 0, 2048},
                 {0, 0, 0, 0},
                 {0, 0, 0, 0},
@@ -93,7 +96,7 @@ public class TestMaxTileExists {
     @Test
     /** Tests when the max piece is in the top left corner. */
     public void testTopLeftCorner() {
-        int[][] rawVals = new int[][] {
+        int[][] rawVals = new int[][]{
                 {2048, 0, 0, 0},
                 {0, 0, 0, 0},
                 {0, 0, 0, 0},
@@ -109,7 +112,7 @@ public class TestMaxTileExists {
     @Test
     /** Tests when the max piece is in the bottom left corner. */
     public void testBottomLeftCorner() {
-        int[][] rawVals = new int[][] {
+        int[][] rawVals = new int[][]{
                 {0, 0, 0, 0},
                 {0, 0, 0, 0},
                 {0, 0, 0, 0},
@@ -125,7 +128,7 @@ public class TestMaxTileExists {
     @Test
     /** Tests when the max piece is in the bottom right corner. */
     public void testBottomRightCorner() {
-        int[][] rawVals = new int[][] {
+        int[][] rawVals = new int[][]{
                 {0, 0, 0, 0},
                 {0, 0, 0, 0},
                 {0, 0, 0, 0},

@@ -11,9 +11,13 @@ import java.util.Random;
  * @author hug
  */
 public class Board implements Iterable<Tile> {
-    /** Current contents of the board. */
+    /**
+     * Current contents of the board.
+     */
     private Tile[][] values;
-    /** Side that the board currently views as north. */
+    /**
+     * Side that the board currently views as north.
+     */
     private Side viewPerspective;
 
     public Board(int size) {
@@ -21,13 +25,17 @@ public class Board implements Iterable<Tile> {
         viewPerspective = Side.NORTH;
     }
 
-    /** Shifts the view of the board such that the board behaves as if side S is north. */
+    /**
+     * Shifts the view of the board such that the board behaves as if side S is north.
+     */
     public void setViewingPerspective(Side s) {
         viewPerspective = s;
     }
 
-    /** Create a board where RAWVALUES hold the values of the tiles on the board 
-     * (0 is null) with a current score of SCORE and the viewing perspective set to north. */
+    /**
+     * Create a board where RAWVALUES hold the values of the tiles on the board
+     * (0 is null) with a current score of SCORE and the viewing perspective set to north.
+     */
     public Board(int[][] rawValues, int score) {
         int size = rawValues.length;
         values = new Tile[size][size];
@@ -46,45 +54,58 @@ public class Board implements Iterable<Tile> {
         }
     }
 
-    /** Returns the size of the board. */
+    /**
+     * Returns the size of the board.
+     */
     public int size() {
         return values.length;
     }
 
-    /** Shifts the view of the Board. */
+    /**
+     * Shifts the view of the Board.
+     */
     public void startViewingFrom(Side s) {
         viewPerspective = s;
     }
 
-    /** Return the current Tile at (COL, ROW), when sitting with the board
-     *  oriented so that SIDE is at the top (farthest) from you. */
+    /**
+     * Return the current Tile at (COL, ROW), when sitting with the board
+     * oriented so that SIDE is at the top (farthest) from you.
+     */
     private Tile vtile(int col, int row, Side side) {
         return values[side.col(col, row, size())][side.row(col, row, size())];
     }
 
-    /** Return the current Tile at (COL, ROW), where 0 <= ROW < size(),
-     *  0 <= COL < size(). Returns null if there is no tile there. */
+    /**
+     * Return the current Tile at (COL, ROW), where 0 <= ROW < size(),
+     * 0 <= COL < size(). Returns null if there is no tile there.
+     */
     public Tile tile(int col, int row) {
         return vtile(col, row, viewPerspective);
     }
 
-    /** Clear the board to empty and reset the score. */
+    /**
+     * Clear the board to empty and reset the score.
+     */
     public void clear() {
         for (Tile[] column : values) {
             Arrays.fill(column, null);
         }
     }
 
-    /** Adds the tile T to the board */
+    /**
+     * Adds the tile T to the board
+     */
     public void addTile(Tile t) {
         values[t.col()][t.row()] = t;
     }
 
-    /** Places the Tile TILE at column COL, row ROW where COL and ROW are
+    /**
+     * Places the Tile TILE at column COL, row ROW where COL and ROW are
      * treated as coordinates with respect to the current viewPerspective.
-     *
+     * <p>
      * Returns whether or not this move is a merge.
-     * */
+     */
     public boolean move(int col, int row, Tile tile) {
         int pcol = viewPerspective.col(col, row, size()),
                 prow = viewPerspective.row(col, row, size());
@@ -121,7 +142,9 @@ public class Board implements Iterable<Tile> {
         return out.toString();
     }
 
-    /** Iterates through teach tile in the board. */
+    /**
+     * Iterates through teach tile in the board.
+     */
     private class AllTileIterator implements Iterator<Tile>, Iterable<Tile> {
         int r, c;
 

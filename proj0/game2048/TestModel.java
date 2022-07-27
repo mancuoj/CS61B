@@ -1,10 +1,12 @@
 package game2048;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-/** Tests of the Model class.
- *
+/**
+ * Tests of the Model class.
+ * <p>
  * These tests will cover all of the things you've written together. You
  * shouldn't try to pass these tests until every other Test file passes.
  *
