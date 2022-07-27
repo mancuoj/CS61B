@@ -7,7 +7,7 @@ import java.util.Observable;
 /**
  * The state of a game of 2048.
  *
- * @author TODO: YOUR NAME HERE
+ * @author Mancuoj
  */
 public class Model extends Observable {
     /**
@@ -146,7 +146,7 @@ public class Model extends Observable {
             for (int row = board.size() - 2; row >= 0; row--) {
                 Tile t = board.tile(col, row);
                 if (t != null) {
-                    int mv = tileCanMove(col, t.value(), merged);
+                    int mv = rowCanMove(col, t.value(), merged);
                     if (mv > 0) {
                         if (board.move(col, mv, t)) {
                             score += t.value() * 2;
@@ -166,7 +166,7 @@ public class Model extends Observable {
         return changed;
     }
 
-    private int tileCanMove(int col, int v, boolean[] merged) {
+    private int rowCanMove(int col, int v, boolean[] merged) {
         for (int row = board.size() - 1; row > 0; row--) {
             Tile t = board.tile(col, row);
             if (t == null || (t.value() == v && !merged[row])) {
@@ -225,10 +225,10 @@ public class Model extends Observable {
      * 2. There are two adjacent tiles with the same value.
      */
     public static boolean atLeastOneMoveExists(Board b) {
-        return emptySpaceExists(b) || atLeastOneMerge(b);
+        return emptySpaceExists(b) || atLeastOneMergeExists(b);
     }
 
-    private static boolean atLeastOneMerge(Board b) {
+    private static boolean atLeastOneMergeExists(Board b) {
         for (int col = 0; col < b.size(); col++) {
             for (int row = 1; row < b.size() - 1; row++) {
                 Tile t = b.tile(col, row);
