@@ -140,9 +140,9 @@ public class Model extends Observable {
         boolean changed;
         changed = false;
         board.setViewingPerspective(side);
-        boolean[][] merged = new boolean[board.size()][board.size()];
 
         for (int col = 0; col < board.size(); col++) {
+            boolean[] merged = new boolean[board.size()];
             for (int row = board.size() - 2; row >= 0; row--) {
                 Tile t = board.tile(col, row);
                 if (t != null) {
@@ -150,7 +150,7 @@ public class Model extends Observable {
                     if (mv > 0) {
                         if (board.move(col, mv, t)) {
                             score += t.value() * 2;
-                            merged[col][mv] = true;
+                            merged[mv] = true;
                         }
                         changed = true;
                     }
@@ -166,10 +166,10 @@ public class Model extends Observable {
         return changed;
     }
 
-    private int tileCanMove(int col, int v, boolean[][] merged) {
+    private int tileCanMove(int col, int v, boolean[] merged) {
         for (int row = board.size() - 1; row > 0; row--) {
             Tile t = board.tile(col, row);
-            if ((t == null || t.value() == v) && !merged[col][row]) {
+            if (t == null || (t.value() == v && !merged[row])) {
                 return row;
             }
         }
