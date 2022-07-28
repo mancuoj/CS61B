@@ -6,6 +6,7 @@ UCB CS61B — 2021 Spring Solutions 🎉
 - [My Blog](https://mancuoj.vercel.app/cs61b)
 - [Textbook Hug61B](https://joshhug.gitbooks.io/hug61b/content/)
 - [Auto Grader - BP25V6](https://www.gradescope.com/)
+- **Only finished Lab1, Lab2, Proj0, and now I'm on to 61A ...**
 
 ## What is it?
 
