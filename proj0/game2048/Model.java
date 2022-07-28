@@ -146,8 +146,8 @@ public class Model extends Observable {
             for (int row = board.size() - 2; row >= 0; row--) {
                 Tile t = board.tile(col, row);
                 if (t != null) {
-                    int mv = rowCanMove(col, t.value(), merged);
-                    if (mv > 0) {
+                    int mv = rowCanMove(col, row, t.value(), merged);
+                    if (mv != row) {
                         if (board.move(col, mv, t)) {
                             score += t.value() * 2;
                             merged[mv] = true;
@@ -166,14 +166,19 @@ public class Model extends Observable {
         return changed;
     }
 
-    private int rowCanMove(int col, int v, boolean[] merged) {
-        for (int row = board.size() - 1; row > 0; row--) {
-            Tile t = board.tile(col, row);
-            if (t == null || (t.value() == v && !merged[row])) {
-                return row;
+    private int rowCanMove(int col, int row, int v, boolean[] merged) {
+        int mv = row;
+        for (int r = row + 1; r < board.size(); r++) {
+            Tile cur = board.tile(col, r);
+            if (cur == null) {
+                mv = r;
+            } else if (v == cur.value() && !merged[r]) {
+                return r;
+            } else {
+                return mv;
             }
         }
-        return -1;
+        return mv;
     }
 
     /**
@@ -229,13 +234,17 @@ public class Model extends Observable {
     }
 
     private static boolean atLeastOneMergeExists(Board b) {
-        for (int col = 0; col < b.size(); col++) {
-            for (int row = 1; row < b.size() - 1; row++) {
-                Tile t = b.tile(col, row);
-                Tile up = b.tile(col, row - 1);
-                Tile down = b.tile(col, row + 1);
-                Tile right = col + 1 < b.size() ? b.tile(col + 1, row) : null;
-                if (t.value() == up.value() || t.value() == down.value() || (right != null && t.value() == right.value())) {
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 3; j++) {
+                Tile down = b.tile(i, j);
+                Tile up = b.tile(i, j + 1);
+                if (down.value() == up.value()) {
+                    return true;
+                }
+
+                Tile left = b.tile(j, i);
+                Tile right = b.tile(j + 1, i);
+                if (left.value() == right.value()) {
                     return true;
                 }
             }
