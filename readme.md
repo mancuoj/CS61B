@@ -1,10 +1,11 @@
+<br>
 <p align="center">
 <img src="./U.png" alt="logo" height="150"/>
 </p>
 
-<p align="center">
+<h1 align="center">
 UCB CS61B — 21 Spring
-</p>
+</h1>
 
 <p align="center">
   <a href="https://sp21.datastructur.es/">course link</a> |
